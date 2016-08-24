@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+
+{% block head_extra %}
+  {{form.media}}
+{% endblock %}
+
+
+{% block content %}
+{{ block.super }}
+
+{% if gen_peticion %}
+  <div class="col-md-6">
+      <a href="{% url 'servicios:indice' %}" class="btn" role="button">VOLVER</a>
+  </div>
+{% else%}
+<div class="col-md-6">
+    <a href="{% url 'servicios:detalles' title %}" class="btn" role="button">VOLVER</a>
+</div>
+{% endif %}
+<div class="col-sm-8 col-sm-offset-2">
+
+
+    {% if gen_peticion %}
+      <h2> {{gen_peticion}}</h2>
+    {% endif %}
+    <br/>
+    {% if num_folio_asig %}
+      <h3> {{num_folio_asig}} {{ folio }}</h3>
+    {% endif %}
+    <form method="POST" action=""> {% csrf_token %}
+      {{ form|crispy }}
+      <input class='btn btn-default' type="submit" value="Registrar Servicio" />
+    </form>
+</div>
+
+{% endblock %}

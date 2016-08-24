@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+  Servicios | Gruas Mancera
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-sm-12">
+      <p><a href="{% url 'servicios:registrar' %}" class="btn btn-primary" role="button">Registrar Servicio</a></p>
+  </div>
+  <br/><br/>
+  <div class="col-sm-12">
+
+    {% if ultimos_servicios %}
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Folio</th>
+                  <th>Fecha</th>
+                  <th>Cliente</th>
+                  <th>Grua</th>
+                  <th>Detalle</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              {% for servicio in ultimos_servicios  %}
+                <tr>
+                  <td> {{ servicio.folio }}</td>
+                  <td> {{ servicio.fecha }}</td>
+                  <td> {{ servicio.cliente }}</td>
+                  <td> {{ servicio.grua }}</td>
+                  <td> <a class="btn btn-success" href="{{ servicio.get_absolute_url }}">Ver detalles</a> </td>
+                </tr>
+              {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+
+    {% else %}
+      <p>No hay servicios registrados.</p>
+    {% endif %}
+
+
+  </div>
+
+</div>
+
+
+
+
+  <!--div class="owl-item" style="width: 375px;"><div class="post-row item">
+      <div class="left-meta-post">
+        <div class="post-date"><span class="day">26</span><span class="month">Dec</span></div>
+        <div class="post-type"><i class="fa fa-picture-o"></i></div>
+      </div>
+      <h3 class="post-title"><a href="#">Link Post</a></h3>
+      <div class="post-content">
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit. <a class="read-more" href="#">Read More...<i class="fa fa-angle-right"></i></a></p>
+      </div>
+    </div></div-->
+
+{% endblock %}

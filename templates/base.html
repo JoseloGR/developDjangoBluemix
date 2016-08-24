@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
+<html lang="es">
+  <head>
+    <title>
+      {% block head_title %}
+        Mancera | Arrendadora
+      {% endblock %}
+    </title>
+    <!-- Define Charset -->
+    <meta charset="utf-8">
+    <!-- Responsive metatag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Page Description and Author -->
+    <meta name="description" content="Mancera - Home">
+    <meta name="author" content="Joselo GR">
+
+    {% include 'head_css.html' %}
+    {% include 'head_js.html' %}
+
+    {% block head_extra %} {% endblock %}
+
+  </head>
+
+  <body>
+
+    <!-- Container -->
+    <div id="container">
+
+      {% include 'header.html' %}
+
+      <!-- Start Page Banner -->
+      <div class="page-banner" style="padding:15px 0; background-color: #f9f9f9;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Servicios Django</h2>
+              <p>La excelencia nos define</p>
+            </div>
+            <div class="col-md-6">
+              <ul class="breadcrumbs">
+                <li><a href="#">{{parentplace}}</a></li>
+                <li>{{place}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Banner -->
+
+
+      <!-- Start Content -->
+      <div id="content">
+        <div class="container">
+            <!--Alerts Messages -->
+            {% include "messages_display.html" %}
+
+            <!--div class="page-content"-->
+            {% block content %}
+
+            {% endblock %}
+
+            <div class="hr1" style="margin-bottom:50px;height:200px;"></div>
+
+            {% block def %}
+              <!--div class="row">
+                <div class="col-md-7">
+                  <h4 class="classic-title"><span>Welcome To Our Agency</span></h4>
+                  <p>Lorem Ipsum is simply dummy text of the <a title="Simple Tooltip" href="#" class="itl-tooltip" data-placement="top">printing</a> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                  <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Sed ut perspiciatis unde omnis iste natus error sit volup accusantium. Lorem ipsum dolor sit amet, consectetur.</p>
+                </div>
+              </div-->
+              <!-- Divider -->
+              <!--div class="hr1" style="margin-bottom:50px;height:200px;"></div-->
+            {% endblock %}
+          <!--/div-->
+        </div>
+      </div>
+      <!-- End content -->
+
+
+      {% include 'footer.html' %}
+
+    </div>
+    <!-- End Container -->
+
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+          $(".comment-reply-btn").click(function(event){
+              event.preventDefault();
+              $(this).parent().next(".comment-reply").fadeToggle();
+          })
+
+      })
+      </script>
+
+  </body>
+</html>

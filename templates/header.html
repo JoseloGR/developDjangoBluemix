@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!-- Start Header -->
+<div class="hidden-header"></div>
+<header class="clearfix">
+
+  <!-- Start Header ( Logo & Naviagtion ) -->
+  <div class="navbar navbar-default navbar-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Stat Toggle Nav Link For Mobiles -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <!-- End Toggle Nav Link For Mobiles -->
+        <a class="navbar-brand" href="{% url 'servicios:indice' %}"><img alt="" src="{% static 'images/mancera.png' %}"></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <!-- Start Navigation List -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a {{activenow}} href="{% url 'servicios:indice' %}">Home</a>
+            <ul class="dropdown">
+              <li><a {{activenowind}} href="{% url 'servicios:indice' %}">Servicios recientes</a></li>
+              <li><a {{activenowwork}} href="#">Servicios en curso</a></li>
+              <li><a {{activenowfinish}} href="#">Servicios completados</a></li>
+            </ul>
+          </li>
+          <li>
+            <a {{activenowclient}} href="#">Clientes</a>
+            <ul class="dropdown">
+              <li><a href="#">Cliente Particular</a></li>
+              <li><a href="#">Aseguradora</a></li>
+              <li><a href="#">CIA de Asistencia</a></li>
+              <li><a href="#">Autoridad</a></li>
+            </ul>
+          </li>
+          <li>
+            <a {{activenowserv}} href="#">Servicios</a>
+            <ul class="dropdown">
+              <li><a href="#">Arrastre</a></li>
+              <li><a href="#">Salvamento</a></li>
+            </ul>
+          </li>
+          <li>
+            <a {{activenowreports}} href="#">Reportes</a>
+            <ul class="dropdown">
+              <li><a href="#">Operador</a></li>
+              <li><a href="#">Administrativo</a></li>
+            </ul>
+          </li>
+          <li>
+            <a {{activenowcuentas}} href="#">Cuentas</a>
+            <ul class="dropdown">
+              <li><a href="#">Cuentas por Cobrar</a></li>
+              <li><a href="#">Cuentas por Pagar</a></li>
+              <li><a href="#">Pensiones</a></li>
+            </ul>
+          </li>
+          <li>
+            <a {{activenowposts}} href="{% url 'posts:list' %}">Posts</a>
+            <ul class="dropdown">
+              <li><a href="{% url 'posts:create' %}">Crear</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- End Navigation List -->
+      </div>
+    </div>
+
+    <!-- Mobile Menu Start -->
+    <ul class="wpb-mobile-menu">
+      <li>
+        <a class="active" href="index.html">Home</a>
+        <ul class="dropdown">
+          <li><a class="active" href="index.html">Home Main</a>
+          </li>
+          <li><a href="#">Servicios en curso</a>
+          </li>
+          <li><a href="#">Servicios completados</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a  href="#">Clientes</a>
+        <ul class="dropdown">
+            <li><a href="#">Cliente Particular</a></li>
+            <li><a href="#">Aseguradora</a></li>
+            <li><a href="#">CIA de Asistencia</a></li>
+            <li><a href="#">Autoridad</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Servicios</a>
+        <ul class="dropdown">
+            <li><a href="#">Arrastre</a></li>
+            <li><a href="#">Salvamento</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Reportes</a>
+        <ul class="dropdown">
+          <li><a href="#">Operador</a></li>
+          <li><a href="#">Administrativo</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Cuentas</a>
+        <ul class="dropdown">
+          <li><a href="#">Cuentas por Cobrar</a></li>
+          <li><a href="#">Cuentas por Pagar</a></li>
+          <li><a href="#">Pensiones</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- Mobile Menu End -->
+
+  </div>
+  <!-- End Header ( Logo & Naviagtion ) -->
+
+</header>
+<!-- End Header -->

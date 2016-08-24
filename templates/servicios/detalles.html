@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <a href="{% url 'servicios:indice' %}" class="btn" role="button">VOLVER</a>
+    </div>
+
+    <div class="hr1" style="margin-bottom:55px;"></div>
+
+
+    {% if error_message %}
+      <p><strong> {{ error_message }} </strong></p>
+    {% endif %}
+
+    <div class="col-md-10">
+
+      <h4 class="classic-title"><span> {{ servicio.folio }} </span></h4>
+      <div class="row">
+
+        <div class="col-md-6 service-box service-icon-left-more">
+            <div class="service-icon">
+              <i class="fa fa-users icon-medium"></i>
+            </div>
+            <div class="service-content">
+              <h4> {{servicio.maniobra}} </h4>
+              <p><strong class="accent-color">Maniobra</strong></p>
+              <!--p>It is a long <strong class="accent-color">established</strong> fact that a reader will be distracted by the readable content of a page.</p-->
+            </div>
+        </div>
+
+        <div class="col-md-6 service-box service-icon-left-more">
+          <div class="service-icon">
+            <i class="fa fa-globe icon-medium"></i>
+          </div>
+          <div class="service-content">
+            <h4> {{servicio.fecha}} </h4>
+            <p><strong class="accent-color">Fecha</strong></p>
+          </div>
+        </div>
+
+        <div class="col-md-6 service-box service-icon-left-more">
+          <div class="service-icon">
+            <i class="fa fa-picture-o icon-medium"></i>
+          </div>
+          <div class="service-content">
+            <h4> {{servicio.traslado}} </h4>
+            <p><strong class="accent-color">Traslado</strong></p>
+          </div>
+        </div>
+
+        <div class="col-md-6 service-box service-icon-left-more">
+          <div class="service-icon">
+            <i class="fa fa-leaf icon-medium"></i>
+          </div>
+          <div class="service-content">
+            <h4> {{ servicio.grua }} </h4>
+            <p><strong class="accent-color">Grua</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <h4 class="classic-title"><span>Acciones</span></h4>
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+              <a href="{% url 'servicios:actualizar' servicio.slug %}" class="btn-system btn-medium border-btn" role="button">Editar</a>
+          </p>
+        </div>
+        <div class="hr1" style="margin-bottom:80px;"></div>
+        <div class="col-md-12">
+          <p>
+              <a href="{% url 'servicios:eliminar' servicio.slug %}" class="btn btn-danger" role="button">ELIMINAR</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% if messages %}
+
+ <div class="call-action call-action-boxed call-action-style1 clearfix messages">
+   <ul class="messages">
+       {% for message in messages %}
+       <li{% if message.tags %} class="{{ message.tags }}"{% endif %}> <h3 class="primary">{{ message }}</h3></li>
+       {% endfor %}
+   </ul>
+ </div>
+
+{% endif %}

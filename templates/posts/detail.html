@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+{{instance.title}} | {{block.super}}
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+  {% if instance.image %}
+    <img src='{{ instance.image.url }}' class="img-responsive" />
+  {% endif %}
+  <h1> {{title}} <small>
+    {% if instance.draft %}
+      <span style='color:red;'>Draft</span>
+    {% endif %}
+    {{instance.timestamp|timesince}}</small> </h1>
+  {% if instance.user.get_full_name %}
+    <p>
+      Author: {{ instance.user.get_full_name }}
+    </p>
+  {% endif %}
+
+  <p>
+    {{instance.content}}<br/>
+  </p>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div>
+      <p class="lead">Comments</p>
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ comment_form|crispy }}
+        <input type="submit" value="Post Comment"/>
+      </form>
+      <hr/>
+        {% for comment in comments  %}
+
+          <blockquote>
+            <p> {{ comment.content }} </p>
+            <footer>via {{ comment.user }} | {{ comment.timestamp|timesince}} ago
+
+              {% if comment.children.count > 0 %}
+                {{ comment.children.count }} Comment{% if comment.children.count > 1 %}s {% endif %} |
+              {% endif %}
+              <a href="#" class="comment-reply-btn">Reply</a> |
+              <a href="{{ comment.get_absolute_url }}" class="">Thread</a>
+            </footer>
+            <div class="comment-reply">
+              {% for child_comment in comment.children  %}
+
+                <blockquote>
+                  <p> {{ child_comment.content }} </p>
+                  <footer>via {{ child_comment.user }} | {{ child_comment.timestamp|timesince}} ago</footer>
+                </blockquote>
+              {% endfor %}
+
+              <form action="" method="POST">
+                {% csrf_token %}
+                {{ comment_form|crispy }}
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <input type="submit" value="Reply"/>
+              </form>
+            </div>
+
+          </blockquote>
+
+        {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

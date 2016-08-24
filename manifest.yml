@@ -1,0 +1,8 @@
+applications:
+-   name: devGruas
+    instances: 2
+    memory: 256M
+    #command: bash ./run.sh
+    buildpack: https://github.com/cloudfoundry/buildpack-python.git
+    path: .
+    #services:
